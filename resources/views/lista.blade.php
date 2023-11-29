@@ -4,7 +4,7 @@
 
 <h3 class="text-center">Lista Livros</h3>
 <div class="text-center">
-    <a href="{{ url('/create') }}">
+    <a href="{{ url('/book/create') }}">
         <button type="button" class="btn btn-outline-success">Cadastrar</button>
     </a>
 </div>
@@ -31,9 +31,8 @@
                             Ações
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                            <li><a class="dropdown-item"
-                                    href="{{ route('lista.show', ['id' => $books->id]) }}">Visualizar</a></li>
-                            <li><a href="{{ route('books.edit', ['book' => $book->id]) }}">Editar</a></li>
+                            <li><a class="dropdown-item" href="{{ route('books.show', ['id' => $books->id]) }}">Visualizar</a></li>
+                            <li><a class="dropdown-item" href="{{ route('books.edit', ['id' => $books->id]) }}">Editar</a></li>
                             <li><a class="dropdown-item" href="#">Deletar</a></li>
                         </ul>
                     </div>

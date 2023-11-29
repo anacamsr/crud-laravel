@@ -28,18 +28,35 @@ Route::get('/', function () {
 // Route::get('/lista/editar/{id}', 'App\Http\Controllers\BookController@edit')->name('lista.edit');
 // Route::put('/lista/atualizar/{id}', 'App\Http\Controllers\BookController@update')->name('lista.update');
 
+// Route::get('/books', [BookController::class, 'index'])->name('books.index');
+
+// Route::get('/books/{id}', [BookController::class, 'show'])->name('lista.show');
+
+// Route::match(['get', 'post'], '/create', [BookController::class, 'create'])->name('books.create');
+
+// Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
+
+// Route::post('/books', [BookController::class, 'store'])->name('books.store');
+
+// Route::resource('books', BookController::class);
+
+// Listagem de Livros
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
 
-// Route with parameters
-Route::get('/books/{id}', [BookController::class, 'show'])->name('lista.show');
+// Detalhes de um Livro
+Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');
 
-// Route with multiple HTTP verbs
-Route::match(['get', 'post'], '/create', [BookController::class, 'create']);
+// Criar um Novo Livro (Formulário)
+Route::get('/book/create', [BookController::class, 'create'])->name('books.create');
 
+// Armazenar um Novo Livro (Processar Formulário)
+Route::post('/book/store', [BookController::class, 'store'])->name('books.store');
+
+// Editar um Livro (Formulário)
 Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
 
-// Route with a named route
-Route::post('/books', [BookController::class, 'store'])->name('books.store');
+// Atualizar um Livro (Processar Formulário)
+Route::post('/books/{id}', [BookController::class, 'update'])->name('books.update');
 
-// Route with a resource controller
-Route::resource('books', BookController::class);
+// Excluir um Livro
+Route::post('/books/{id}/delete', [BookController::class, 'destroy'])->name('books.destroy');
