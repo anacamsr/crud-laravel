@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
 <div class="">
-    <h2 class="text-center" style="text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15)">Biblioteca de Livros</h2>
+<h2 class="text-center" style="text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15)">Biblioteca de Livros</h2>
 </div>
 <div class="" style="margin-left:77%">
     <a href="{{ url('/book/create') }}">
