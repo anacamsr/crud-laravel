@@ -1,9 +1,11 @@
 @extends('templantes.templante')
 
 @section('content')
-
-<h3 class="text-center">Lista Livros</h3>
-<div class="text-center">
+<div class="container-fluid">
+<div class="">
+    <h2 class="text-center" style="text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15)">Biblioteca de Livros</h2>
+</div>
+<div class="" style="margin-left:77%">
     <a href="{{ url('/book/create') }}">
         <button type="button" class="btn btn-outline-success">Cadastrar</button>
     </a>
@@ -41,6 +43,7 @@
             @endforeach
         </tbody>
     </table>
+</div>
 </div>
 <script>
 // Initialize the Bootstrap dropdown component
