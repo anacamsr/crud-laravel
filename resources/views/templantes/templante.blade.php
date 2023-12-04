@@ -9,6 +9,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+    <nav class="nav navbar-dark bg-dark" style="padding: 5px 30px ;">
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="{{ url('/books') }}" class="item-nav">
+                Home
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ url('/book/create') }}" class="item-nav">
+                Cadastrar
+                </a>
+            </li>
+        </ul>
+    </nav>
     @yield('content')
 </body>
 </html>
+<style>
+    .nav-item{
+        margin: 10px;
+    }
+    .item-nav{
+        color: white;
+        font-size: 20px;
+        border-bottom: none;
+        text-decoration: none; 
+    }
+    
+</style>

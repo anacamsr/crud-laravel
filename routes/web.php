@@ -59,4 +59,4 @@ Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edi
 Route::post('/books/{id}', [BookController::class, 'update'])->name('books.update');
 
 // Excluir um Livro
-Route::post('/books/{id}/delete', [BookController::class, 'destroy'])->name('books.destroy');
+Route::get('/books/{id}/delete', [BookController::class, 'destroy'])->name('books.destroy');
