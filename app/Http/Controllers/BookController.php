@@ -10,7 +10,7 @@ class BookController extends Controller
 {
     private $objUser;
     private $objBook;
-    
+
     public function __construct()
     {
         $this->objUser = new User();
@@ -36,8 +36,8 @@ class BookController extends Controller
     public function create()
     {
         $users = User::all();
-        
-        return view ('create', compact('users'));
+
+        return view('create', compact('users'));
     }
 
     /**
@@ -54,10 +54,9 @@ class BookController extends Controller
             'id_user' => 'required|exists:users,id',
         ]);
 
-       $data = Book::create($validatedData);
+        $data = Book::create($validatedData);
 
         return redirect()->route('books.index', compact('data'))->with('success', 'Book created successfully!');
-    
     }
 
     /**
@@ -82,18 +81,18 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        $users=$this->objUser->all();
-        $books= $this->objBook->get();
+        $users = $this->objUser->all();
+        $books = $this->objBook->get();
 
         // $book = $this->objBook->find($id);
         // return view('create', compact('book', 'users'));
         $book = Book::find($id); // Retrieve the book to be edited by its ID
-        
+
 
         if (!$book) {
             return redirect()->route('books.index')->with('error', 'Book not found!');
         }
-    
+
         return view('create', compact('book', 'users', 'books')); // Pass the book data to the 'edit' view
     }
 
@@ -128,6 +127,5 @@ class BookController extends Controller
         }
         $book->delete();
         return redirect()->route('books.index')->with('success', 'Book deleted successfully!');
-
     }
 }
