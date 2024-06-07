@@ -25,7 +25,7 @@
                 </div>
             </div>
         </form>
-        <table class="table">
+        <table class="table table-light table-striped">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
@@ -59,12 +59,9 @@
                 @endforeach
             </tbody>
         </table>
-
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                {{ $books->links() }}
-            </ul>
-        </nav>
+        <div class="d-flex justify-content-center">
+            {{ $books->links() }}
+        </div>
     </div>
 </div>
 <style>

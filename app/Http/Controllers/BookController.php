@@ -35,7 +35,7 @@ class BookController extends Controller
             $query->where('title', 'like', '%' . $request->title . '%');
         }
 
-        $books = $query->orderBy('title')->paginate(10);
+        $books = $query->orderBy('created_at', 'desc')->paginate(10);
 
         return view('lista', compact('books'));
     }
