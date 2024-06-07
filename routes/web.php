@@ -18,11 +18,12 @@ use App\Http\Controllers\BookController;
 // });
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('books.index');
 });
 
 // Listagem de Livros
 Route::get('/books', [BookController::class, 'index'])->name('books.index');
+Route::get('/books/search', [BookController::class, 'index'])->name('books.search');
 
 // Detalhes de um Livro
 Route::get('/books/{id}', [BookController::class, 'show'])->name('books.show');

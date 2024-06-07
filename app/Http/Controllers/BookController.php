@@ -21,11 +21,23 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $book = $this->objBook->all()->sortBy('title');
-        return view('lista', compact('book'));
-        // dd($this->objUser->find(1)->relBooks);
+        $query = $this->objBook->query();
+
+        if ($request->has('author')) {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('name', 'like', '%' . $request->author . '%');
+            });
+        }
+
+        if ($request->has('title')) {
+            $query->where('title', 'like', '%' . $request->title . '%');
+        }
+
+        $books = $query->orderBy('title')->paginate(10);
+
+        return view('lista', compact('books'));
     }
 
     /**
@@ -67,9 +79,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        // $book = $this->objBook->find($id);
-        // return view('visualizar',compact('book'));
-        $book = Book::find($id); // Retrieve a specific book by ID
+        $book = Book::find($id);
         return view('visualizar', compact('book'));
     }
 
@@ -84,16 +94,14 @@ class BookController extends Controller
         $users = $this->objUser->all();
         $books = $this->objBook->get();
 
-        // $book = $this->objBook->find($id);
-        // return view('create', compact('book', 'users'));
-        $book = Book::find($id); // Retrieve the book to be edited by its ID
+        $book = Book::find($id);
 
 
         if (!$book) {
             return redirect()->route('books.index')->with('error', 'Book not found!');
         }
 
-        return view('create', compact('book', 'users', 'books')); // Pass the book data to the 'edit' view
+        return view('create', compact('book', 'users', 'books'));
     }
 
     /**

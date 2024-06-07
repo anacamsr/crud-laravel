@@ -10,10 +10,14 @@ class Book extends Model
 {
     // use HasFactory;
     protected $table = 'books';
-    protected $fillable = ['title','price','id_user'];
+    protected $fillable = ['title', 'price', 'id_user'];
 
     public function relUsers()
     {
         return $this->hasOne(User::class, 'id', 'id_user');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user');
     }
 }
